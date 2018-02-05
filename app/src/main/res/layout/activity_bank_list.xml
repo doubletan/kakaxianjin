@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_ff"
+    android:orientation="vertical"
+    tools:context="com.xinhe.kakaxianjin.activity.BankListActivity">
+
+    <include layout="@layout/toolbar"/>
+    <include layout="@layout/line_cb"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="温馨提示:目前只支持以下银行"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/length_10"
+        android:textSize="@dimen/size_12"
+        android:background="@color/bg_color_ef"/>
+    
+    <ListView
+        android:id="@+id/bank_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/bg_color_ef"
+        android:dividerHeight="0.5dp"
+        ></ListView>
+
+</LinearLayout>

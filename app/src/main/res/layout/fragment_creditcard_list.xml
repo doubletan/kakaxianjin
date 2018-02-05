@@ -1,0 +1,84 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinhe.kakaxianjin.fragment.CreditcardListFragment">
+
+    <LinearLayout
+        android:id="@+id/creditcard_list_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/bg_color_ef"
+        >
+
+        <ImageView
+            android:layout_width="185dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="100dp"
+            android:src="@mipmap/card_list1"/>
+        <TextView
+            android:id="@+id/creditcard_list_tv"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:text="+ 添加信用卡"
+            android:gravity="center"
+            android:textColor="@color/common_red"
+            android:textSize="@dimen/size_14"
+            android:background="@drawable/card_list_add_bg"
+            android:layout_marginTop="@dimen/length_40"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/creditcard_list_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/bg_color_ef"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/length_20"
+            >
+            <ListView
+                android:id="@+id/creditcard_list_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            </ListView>
+            <LinearLayout
+                android:id="@+id/creditcard_list_ll1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_48"
+                android:layout_marginRight="@dimen/length_15"
+                android:layout_marginLeft="@dimen/length_15"
+                android:background="@drawable/white_bg"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/length_10"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="@dimen/size_16"
+                    android:textColor="@color/text_color_99"
+                    android:layout_marginLeft="@dimen/length_10"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加信用卡"
+                    android:textSize="@dimen/size_12"
+                    android:textColor="@color/text_color_99"
+                    android:layout_marginLeft="@dimen/length_10"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

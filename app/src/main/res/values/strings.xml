@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">卡卡现金</string>
+
+    <!-- h5下载 -->
+    <string name="update_app_model_prepare">准备下载</string>
+    <string name="update_app_model_progress">正在下载 %1$d%2$s</string>
+    <string name="update_app_model_success">下载成功(点击安装)</string>
+    <string name="update_app_model_error">下载失败(点击用浏览器下载)</string>
+
+
+    <!--身份验证说明-->
+    <string name="id_verify_explain">完成身份认证:\n1.防范身份信息被冒用，确保资金安全。\n2.放心刷卡交易，保障账户安全。</string>
+    <!--储蓄卡说明-->
+    <string name="card_verify_explain">储蓄卡认证说明:\n1.这里添加的储蓄卡将作为收款的到账卡。\n2.请填写<font color='#ff6666'>本人名下</font>的储蓄卡，并仔细核对信息。</string>
+    <!--信用卡说明-->
+    <string name="creditcard_verify_explain">信用卡认证说明：\n1.这里添加的信用卡将作为提款卡。\n2.填写<font color='#ff6666'>本人名下</font>的信用卡，并仔细核对信息。</string>
+    <!--取现结果说明-->
+    <string name="cash_result_explain">交易时间为00:00-22:30\n22:30至次日00:00不可交易，请在可交易时间操作。</string>
+
+    <!--SweetAlertDialog-->
+    <string name="dialog_default_title">Here\'s a message!</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="LOADING">Loading...</string>
+</resources>

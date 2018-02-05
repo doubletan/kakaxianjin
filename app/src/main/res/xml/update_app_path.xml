@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <cache-path
+            name="update_app_cache_files"
+            path="/update" />
+        <external-path
+            name="update_app_external_files"
+            path="/" />
+        <external-cache-path
+            name="update_app_external_cache_files"
+            path="/update" />
+    </paths>
+
+    <cache-path name="portrait" path="images/"/>
+    <cache-path name="idCard" path="images/"/>
+    <cache-path name="license" path="images/"/>
+    <paths>
+        <external-path
+            name="camera_photos"
+            path="" />
+    </paths>
+</resources>

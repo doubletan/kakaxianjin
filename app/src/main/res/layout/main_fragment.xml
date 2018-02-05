@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color_ff">
+
+    <LinearLayout
+        android:id="@+id/main_fragment_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_48"
+        android:background="@color/colorPrimary"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/size_18"
+            android:textColor="@color/text_color_32"
+            android:text="@string/app_name"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <include layout="@layout/line_cb"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/refreshLayout"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="安全  秒到  保证"
+                    android:textColor="@color/text_color_66"
+                    android:textSize="@dimen/size_16"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/length_25"/>
+
+                <Button
+                    android:id="@+id/main_fragment_enchashment_btn"
+                    android:layout_width="210dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/main_fragment_button_bg"
+                    android:text="信用卡收款"
+                    android:textColor="@color/bg_color_ff"
+                    android:textSize="@dimen/size_17"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/length_10"
+                    />
+
+                <TextView
+                    android:id="@+id/main_fragment_apply_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="今日"
+                    android:textSize="@dimen/size_11"
+                    android:textColor="@color/text_color_99"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/length_20"
+                    android:layout_marginBottom="@dimen/length_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/length_10"
+                    android:background="@color/bg_color_ef"/>
+
+                <LinearLayout
+                    android:id="@+id/main_activity_buttom_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:background="@color/bg_color_ff"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/main_fragment_rl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:clickable="true">
+
+                        <ImageView
+                            android:id="@+id/main_fragment_iv1"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@mipmap/main_fragment1"
+                            />
+                        <TextView
+                            android:id="@+id/main_fragment_tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/length_5"
+                            android:text="进度"
+                            android:textColor="@color/text_color_32"
+                            android:textSize="@dimen/size_11"
+                            android:gravity="center"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/main_fragment_rl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:clickable="true">
+
+                        <ImageView
+                            android:id="@+id/main_fragment_iv2"
+                            android:layout_width="32.5dp"
+                            android:layout_height="27.5dp"
+                            android:src="@mipmap/main_fragment2"
+                            />
+                        <TextView
+                            android:id="@+id/main_fragment_tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/length_5"
+                            android:text="办卡"
+                            android:textColor="@color/text_color_32"
+                            android:textSize="@dimen/size_11"
+                            android:gravity="center"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/main_fragment_rl3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                        >
+
+                        <ImageView
+                            android:id="@+id/main_fragment_iv3"
+                            android:layout_width="32.5dp"
+                            android:layout_height="39.5dp"
+                            android:src="@mipmap/main_fragment3"
+                            />
+                        <TextView
+                            android:id="@+id/main_fragment_tv3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/length_5"
+                            android:text="攻略"
+                            android:textColor="@color/text_color_32"
+                            android:textSize="@dimen/size_11"
+                            android:gravity="center"
+                            />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/length_10"
+                    android:background="@color/bg_color_ef"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="银行列表"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/length_10"
+                    android:textSize="@dimen/size_11"
+                    android:textColor="@color/text_color_32"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/bg_color_ef"/>
+
+                <GridView
+                    android:id="@+id/main_fragment_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:verticalSpacing="0.5dp"
+                    android:horizontalSpacing="0.5dp"
+                    android:numColumns="2"
+                    android:background="@color/bg_color_ef"
+                    ></GridView>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

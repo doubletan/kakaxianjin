@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinhe.kakaxianjin.fragment.DepositcardListFragment">
+
+    <LinearLayout
+        android:id="@+id/depositcard_list_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/bg_color_ef"
+        >
+
+        <ImageView
+            android:layout_width="185dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="100dp"
+            android:src="@mipmap/card_list2"/>
+        <TextView
+            android:id="@+id/depositcard_list_tv"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:text="+ 添加储蓄卡"
+            android:gravity="center"
+            android:textColor="@color/common_red"
+            android:textSize="@dimen/size_14"
+            android:background="@drawable/card_list_add_bg"
+            android:layout_marginTop="@dimen/length_40"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/depositcard_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color_ef"
+        android:divider="@null"
+        >
+
+    </ListView>
+
+</FrameLayout>

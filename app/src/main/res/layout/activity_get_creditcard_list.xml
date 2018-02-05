@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_ff"
+    android:orientation="vertical"
+    tools:context="com.xinhe.kakaxianjin.activity.GetCreditcardListActivity">
+
+
+    <include layout="@layout/toolbar"/>
+    <include layout="@layout/line_cb"/>
+
+
+    <ListView
+        android:id="@+id/get_creditcard_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        ></ListView>
+
+</LinearLayout>

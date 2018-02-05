@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp">
+
+
+    <RelativeLayout
+        android:id="@+id/choose_creditcard_item_rl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/choose_creditcard_bg"
+        android:layout_marginLeft="@dimen/length_15"
+        android:layout_marginRight="@dimen/length_15"
+        android:layout_marginTop="@dimen/length_10"
+        android:layout_marginBottom="@dimen/length_10"
+        >
+        <ImageView
+            android:id="@+id/choose_creditcard_item_iv"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="@dimen/length_15"
+            android:padding="@dimen/length_8"
+            android:background="@drawable/choose_creditcard_item_bg"
+            />
+        <TextView
+            android:id="@+id/choose_creditcard_item_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中国银行"
+            android:layout_toRightOf="@+id/choose_creditcard_item_iv"
+            android:textColor="@color/bg_color_ff"
+            android:textSize="@dimen/size_16"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="@dimen/length_5"/>
+        <TextView
+            android:id="@+id/choose_creditcard_item_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="信用卡"
+            android:layout_toRightOf="@+id/choose_creditcard_item_iv"
+            android:textColor="@color/bg_color_ff"
+            android:textSize="@dimen/size_13"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/choose_creditcard_item_tv1"
+            android:layout_marginLeft="@dimen/length_5"/>
+        <TextView
+            android:id="@+id/choose_creditcard_item_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234567890123354"
+            android:layout_toRightOf="@+id/choose_creditcard_item_iv"
+            android:textColor="@color/bg_color_ff"
+            android:textSize="21sp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/choose_creditcard_item_tv2"
+            android:layout_marginLeft="@dimen/length_5"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/choose_creditcard_item_rl2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/choose_creditcard_bg"
+        android:layout_marginLeft="@dimen/length_15"
+        android:layout_marginRight="@dimen/length_15"
+        android:layout_marginTop="@dimen/length_10"
+        android:layout_marginBottom="@dimen/length_10"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收款信用卡"
+            android:textColor="@color/bg_color_ff"
+            android:textSize="@dimen/length_13"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="@dimen/length_15"/>
+
+        <ImageView
+            android:id="@+id/choose_creditcard_item_iv1"
+            android:layout_width="84dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/choose_creditcard_item"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="@dimen/length_15"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</FrameLayout>

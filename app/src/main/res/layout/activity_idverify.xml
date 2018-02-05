@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_ef"
+    android:orientation="vertical"
+    tools:context="com.xinhe.kakaxianjin.activity.IDVerifyActivity">
+
+
+    <include layout="@layout/toolbar"/>
+    <include layout="@layout/line_cb"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_48"
+        android:background="@color/bg_color_ff"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证验证"
+            android:textSize="@dimen/size_11"
+            android:textColor="@color/text_color_66"
+            />
+        <ImageView
+            android:layout_width="@dimen/length_6"
+            android:layout_height="@dimen/length_7"
+            android:src="@mipmap/verify1"
+            android:layout_marginLeft="@dimen/length_5"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定储蓄卡"
+            android:textSize="@dimen/size_11"
+            android:textColor="@color/text_color_66"
+            android:layout_marginLeft="@dimen/length_10"
+            />
+        <ImageView
+            android:layout_width="@dimen/length_6"
+            android:layout_height="@dimen/length_7"
+            android:src="@mipmap/verify1"
+            android:layout_marginLeft="@dimen/length_5"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定信用卡"
+            android:textSize="@dimen/size_11"
+            android:textColor="@color/text_color_66"
+            android:layout_marginLeft="@dimen/length_10"
+            />
+        <ImageView
+            android:layout_width="@dimen/length_6"
+            android:layout_height="@dimen/length_7"
+            android:src="@mipmap/verify1"
+            android:layout_marginLeft="@dimen/length_5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color_ff"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:id="@+id/id_verify_iv"
+            android:layout_width="250dp"
+            android:layout_height="160dp"
+            android:src="@mipmap/id_verify1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请拍摄身份证人面像"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_12"
+            android:layout_marginTop="@dimen/length_18"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请拍摄身份证人面像"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_11"
+            android:layout_marginTop="@dimen/length_7"
+            android:layout_marginBottom="25dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_verify_explain"
+        android:layout_marginTop="@dimen/length_20"
+        android:layout_marginLeft="@dimen/length_15"
+        android:lineSpacingExtra="@dimen/length_3"/>
+
+    <Button
+        android:id="@+id/id_verify_btn"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:background="@drawable/main_fragment_button_bg"
+        android:text="开始认证"
+        android:textColor="@color/bg_color_ff"
+        android:textSize="@dimen/size_17"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/length_10"
+        >
+        <ImageView
+            android:layout_width="181dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/id_verify2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/length_15"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

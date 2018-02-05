@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color_ef"
+    tools:context="com.xinhe.kakaxianjin.activity.CashResultActivity">
+
+
+    <include layout="@layout/toolbar"/>
+    <include layout="@layout/line_cb"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/bg_color_ff"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@mipmap/cash_result"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="操作成功"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/length_5"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_15"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        android:layout_marginTop="@dimen/length_5"
+        >
+        <TextView
+            android:id="@+id/cash_result_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交易日期"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_time_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+    <include layout="@layout/line_ef"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        >
+        <TextView
+            android:id="@+id/cash_result_count1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付金额"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_count1_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+    <include layout="@layout/line_ef"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        >
+        <TextView
+            android:id="@+id/cash_result_count2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收款金额"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_count2_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+    <include layout="@layout/line_ef"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        >
+        <TextView
+            android:id="@+id/cash_result_credit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付信用卡"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_credit_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+    <include layout="@layout/line_ef"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        >
+        <TextView
+            android:id="@+id/cash_result_card_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收款储蓄卡"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_card_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+    <include layout="@layout/line_ef"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_color_ff"
+        >
+        <TextView
+            android:id="@+id/cash_result_time1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预计到账时间"
+            android:textColor="@color/text_color_32"
+            android:textSize="@dimen/size_14"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/length_15"
+            />
+
+        <TextView
+            android:id="@+id/cash_result_time1_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color_66"
+            android:text="2小时以内"
+            android:textSize="@dimen/size_13"
+            android:layout_marginRight="@dimen/length_15"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/length_5"
+        android:layout_marginLeft="@dimen/length_15"
+        android:textColor="@color/text_color_66"
+        android:textSize="@dimen/size_12"
+        android:text="@string/cash_result_explain"
+        />
+
+    <Button
+        android:id="@+id/cash_result_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/length_15"
+        android:layout_marginRight="@dimen/length_15"
+        android:background="@drawable/main_fragment_button_bg"
+        android:text="完成"
+        android:textColor="@color/bg_color_ff"
+        android:textSize="@dimen/size_17"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/length_10"
+        />
+
+</LinearLayout>
