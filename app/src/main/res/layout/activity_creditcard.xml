@@ -157,12 +157,12 @@
                     android:layout_marginLeft="@dimen/length_15"
                     />
 
-                <EditText
+                <com.xinhe.kakaxianjin.view.spaceedittext.SpaceEditText
                     android:id="@+id/creditcard_et1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/creditcard_tv1"
-                    android:layout_toLeftOf="@+id/card_iv1"
+                    android:layout_toLeftOf="@+id/creditcard_iv1"
                     android:background="@null"
                     android:lines="1"
                     android:layout_centerVertical="true"

@@ -123,7 +123,7 @@ public class CashRecordsActivity extends BaseActivity {
 
                                 if (cashRecords.getError_code() == 0) {
                                     dataProducts.clear();
-                                    if (null != cashRecords.getData() && cashRecords.getData().getList().size() > 0) {
+                                    if (null != cashRecords.getData() && null!=cashRecords.getData().getList()&& cashRecords.getData().getList().size() > 0) {
                                         dataProducts.addAll(cashRecords.getData().getList());
                                         cashRecordsLv.setVisibility(View.VISIBLE);
                                     } else {

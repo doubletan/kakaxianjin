@@ -25,7 +25,7 @@ public class MyApplication extends Application{
     /**
      * release=true 软件发布 false:开发中
      */
-    public static boolean isRelease = false;
+    public static boolean isRelease = true;
     //信用卡产品
     public static CreditProduct creditProduct;
     //用户token
@@ -99,8 +99,8 @@ public class MyApplication extends Application{
                 activity.finish();
             }
         }
-        android.os.Process.killProcess(android.os.Process.myPid());   //获取PID
-        System.exit(0);
+//        android.os.Process.killProcess(android.os.Process.myPid());   //获取PID
+//        System.exit(0);
     }
 
 }

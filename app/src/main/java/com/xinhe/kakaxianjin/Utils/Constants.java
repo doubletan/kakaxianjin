@@ -22,7 +22,9 @@ public class Constants {
 
 
 
-    //地址
+//    //测试地址
+//    public static String commonURL = "http://test.api.anwenqianbao.com/v0/";
+    //正式地址
     public static String commonURL = "https://api.anwenqianbao.com/v0/";
     //注册发送验证码
     public static String sendCode = "sms/getcode";
@@ -96,7 +98,7 @@ public class Constants {
     //注册渠道
     public static String channel = "2";
     //注册渠道1
-    public static String channel1 = "tengxun";
+    public static String channel1 = "meizu";
     //App名称
     public static String appName = "现金贷";
     //公司名字

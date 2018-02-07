@@ -883,7 +883,7 @@ public class ChooseCreditcardActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 120:
+            case 123:
                 if (resultCode == RESULT_OK) {
                     getState1();
                 }

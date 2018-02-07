@@ -43,6 +43,7 @@ import com.xinhe.kakaxianjin.bean.BankListMessage;
 import com.xinhe.kakaxianjin.bean.BindCardMessage;
 import com.xinhe.kakaxianjin.bean.DiscernBankMessage;
 import com.xinhe.kakaxianjin.bean.PersonalInformationMessage;
+import com.xinhe.kakaxianjin.view.spaceedittext.SpaceEditText;
 
 import org.json.JSONObject;
 
@@ -67,7 +68,7 @@ public class CardActivity extends BaseActivity {
     @BindView(R.id.card_ll)
     LinearLayout cardLl;
     @BindView(R.id.card_et1)
-    EditText cardEt1;
+    SpaceEditText cardEt1;
     @BindView(R.id.card_iv1)
     ImageView cardIv1;
     @BindView(R.id.card_et2)
@@ -296,7 +297,7 @@ public class CardActivity extends BaseActivity {
             return;
         }
 
-        cardNumber = cardEt1.getText().toString();
+        cardNumber = cardEt1.getText().toString().replace(" ","");
         if (TextUtils.isEmpty(cardNumber)) {
             Toast.makeText(this, "请输入储蓄卡号", Toast.LENGTH_LONG).show();
             return;

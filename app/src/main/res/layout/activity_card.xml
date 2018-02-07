@@ -152,7 +152,7 @@
             android:layout_marginLeft="@dimen/length_15"
             />
 
-        <EditText
+        <com.xinhe.kakaxianjin.view.spaceedittext.SpaceEditText
             android:id="@+id/card_et1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

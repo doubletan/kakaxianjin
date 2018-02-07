@@ -92,7 +92,7 @@
             android:value="5a727dcff43e4807e5000030" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="tengxun" />
+            android:value="meizu" />
 
         <activity android:name=".activity.GetCreditcardListActivity"></activity>
     </application>
