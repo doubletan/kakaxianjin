@@ -1,6 +1,7 @@
 package com.xinhe.kakaxianjin.Utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -100,5 +101,14 @@ public class Utill {
 			result = context.getResources().getDimensionPixelSize(resourceId);
 		}
 		return result;
+	}
+
+	// 获取导航栏高度
+	public static int getNavigationBarHeight(Context activity) {
+		Resources resources = activity.getResources();
+		int resourceId = resources.getIdentifier("navigation_bar_height","dimen", "android");
+		//获取NavigationBar的高度
+		int height = resources.getDimensionPixelSize(resourceId);
+		return height;
 	}
 }

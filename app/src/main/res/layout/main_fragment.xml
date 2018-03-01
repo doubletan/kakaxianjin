@@ -103,8 +103,8 @@
 
                         <ImageView
                             android:id="@+id/main_fragment_iv1"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="32.5dp"
+                            android:layout_height="32.5dp"
                             android:src="@mipmap/main_fragment1"
                             />
                         <TextView
@@ -139,7 +139,7 @@
                             android:id="@+id/main_fragment_tv2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/length_5"
+                            android:layout_marginTop="@dimen/length_10"
                             android:text="办卡"
                             android:textColor="@color/text_color_32"
                             android:textSize="@dimen/size_11"
@@ -161,15 +161,43 @@
                         <ImageView
                             android:id="@+id/main_fragment_iv3"
                             android:layout_width="32.5dp"
-                            android:layout_height="39.5dp"
+                            android:layout_height="29.5dp"
                             android:src="@mipmap/main_fragment3"
                             />
                         <TextView
                             android:id="@+id/main_fragment_tv3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/length_5"
+                            android:layout_marginTop="@dimen/length_8"
                             android:text="攻略"
+                            android:textColor="@color/text_color_32"
+                            android:textSize="@dimen/size_11"
+                            android:gravity="center"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/main_fragment_rl4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                        >
+
+                        <ImageView
+                            android:id="@+id/main_fragment_iv4"
+                            android:layout_width="32.5dp"
+                            android:layout_height="32.5dp"
+                            android:src="@mipmap/main_fragment4"
+                            />
+                        <TextView
+                            android:id="@+id/main_fragment_tv4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/length_5"
+                            android:text="积分兑换"
                             android:textColor="@color/text_color_32"
                             android:textSize="@dimen/size_11"
                             android:gravity="center"

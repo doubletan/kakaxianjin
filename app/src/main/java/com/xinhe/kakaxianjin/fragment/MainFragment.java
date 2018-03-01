@@ -78,6 +78,8 @@ public class MainFragment extends Fragment {
     LinearLayout mainFragmentRl2;
     @BindView(R.id.main_fragment_rl3)
     LinearLayout mainFragmentRl3;
+    @BindView(R.id.main_fragment_rl4)
+    LinearLayout mainFragmentRl4;
     @BindView(R.id.main_activity_buttom_ll)
     LinearLayout mainActivityButtomLl;
     private View view;
@@ -219,7 +221,7 @@ public class MainFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.main_fragment_enchashment_btn, R.id.main_fragment_rl1, R.id.main_fragment_rl2, R.id.main_fragment_rl3})
+    @OnClick({R.id.main_fragment_enchashment_btn, R.id.main_fragment_rl1, R.id.main_fragment_rl2, R.id.main_fragment_rl3, R.id.main_fragment_rl4})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_fragment_enchashment_btn:
@@ -255,6 +257,17 @@ public class MainFragment extends Fragment {
                 if (MyApplication.isLogin){
                     Intent intent2 = new Intent(getContext(), WebViewTitleActivity.class);
                     intent2.putExtra("url", Constants.gonglue);
+                    startActivity(intent2);
+                }else {
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+
+                break;
+            case R.id.main_fragment_rl4:
+                if (MyApplication.isLogin){
+                    Intent intent2 = new Intent(getContext(), WebViewTitleActivity.class);
+                    intent2.putExtra("url", Constants.jifen);
                     startActivity(intent2);
                 }else {
                     Intent intent = new Intent(getContext(), LoginActivity.class);

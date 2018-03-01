@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.xinhe.kakaxianjin.activity.CameraActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.xinhe.kakaxianjin.view.camera.CameraSurfaceView
+            android:id="@+id/camera_SurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"/>
+
+        <com.xinhe.kakaxianjin.view.camera.CameraTopRectView
+            android:id="@+id/rect_OnCamera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20px"
+                android:id="@+id/take_Pic"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="#88427ac7"
+                android:text="拍照"
+                android:textColor="#aaa" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

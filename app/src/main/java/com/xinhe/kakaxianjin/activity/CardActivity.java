@@ -210,6 +210,7 @@ public class CardActivity extends BaseActivity {
                             Constants.PERMISSION_WRITE_EXTERNAL_STORAGE);
                     return;
                 }
+                //系统拍照
                 takeForPicture();
                 break;
             case R.id.card_btn:
@@ -377,6 +378,42 @@ public class CardActivity extends BaseActivity {
     }
 
     /**
+     * 调用自定义相机
+     */
+    private void takeForPicture1() {
+
+        try {
+            String storageState = Environment.getExternalStorageState();
+            File vFile;
+            if (storageState.equals(Environment.MEDIA_MOUNTED)) {
+                vFile = new File(Environment.getExternalStorageDirectory().getPath()
+                        + "/kakaxianjin/");//图片位置
+                if (!vFile.exists()) {
+                    vFile.mkdirs();
+                }
+            } else {
+                Toast.makeText(CardActivity.this, "未挂载sdcard", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new
+                    Date()) + ".jpg";
+
+            file = new File(vFile, fileName);
+            //拍照所存路径
+            origUri = Uri.fromFile(file);
+
+            //自定义相机
+            Intent intent = new Intent(this,CameraActivity.class);
+            intent.putExtra("file",origUri.toString());
+            startActivityForResult(intent, Constants.REQUEST_CODE_TAKE_PICETURE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    /**
      * 调用相机
      */
     private void takeForPicture() {
@@ -404,7 +441,7 @@ public class CardActivity extends BaseActivity {
 
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (Build.VERSION.SDK_INT > 23) {//7.0及以上
-                origUri = FileProvider.getUriForFile(CardActivity.this, Constants.fileprovider, new File(vFile, fileName));
+                origUri = FileProvider.getUriForFile(CardActivity.this, Constants.fileprovider, file);
                 grantUriPermission(getPackageName(), origUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, origUri);
             } else {//7.0以下

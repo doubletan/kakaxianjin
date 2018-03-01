@@ -52,7 +52,8 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:layout_weight="1"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            >
 
             <Button
                 android:id="@+id/main_activity_buttom_btn2"

@@ -19,6 +19,8 @@ public class Constants {
     public static String card="https://www.shoujiweidai.com/credit_card/#/apply_list";
     //攻略
     public static String gonglue="https://www.shoujiweidai.com/credit_card/#/guide";
+    //积分
+    public static String jifen="https://www.shoujiweidai.com/credit_card/#/exchange";
 
 
 
@@ -98,7 +100,7 @@ public class Constants {
     //注册渠道
     public static String channel = "2";
     //注册渠道1
-    public static String channel1 = "meizu";
+    public static String channel1 = "baidu";
     //App名称
     public static String appName = "现金贷";
     //公司名字

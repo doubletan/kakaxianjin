@@ -58,6 +58,7 @@
         <item name="android:textColor">@color/button_text_color</item>
     </style>
 
+    <!--相机-->
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
