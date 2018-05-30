@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +29,7 @@ import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
+import com.mob.MobSDK;
 import com.xinhe.kakaxianjin.MyApplication;
 import com.xinhe.kakaxianjin.R;
 import com.xinhe.kakaxianjin.Utils.Constants;
@@ -51,7 +54,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by tantan on 2018/1/15.
@@ -79,6 +84,8 @@ public class MeFragment extends Fragment {
     @BindView(R.id.me_fragment_quit_btn)
     Button meFragmentQuitBtn;
     Unbinder unbinder;
+    @BindView(R.id.me_fragment_rl5)
+    RelativeLayout meFragmentRl5;
     private View view;
     private InnerReceiver receiver;
     private KProgressHUD hd;
@@ -89,6 +96,15 @@ public class MeFragment extends Fragment {
         view = View.inflate(getActivity(), R.layout.me_fragment, null);
         try {
             unbinder = ButterKnife.bind(this, view);
+//            // 设置顶部控件不占据状态栏
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                LinearLayout barLl = (LinearLayout) view.findViewById(R.id.me_fragment_top);
+//                barLl.setVisibility(View.VISIBLE);
+//                LinearLayout.LayoutParams ll = (LinearLayout.LayoutParams) barLl.getLayoutParams();
+//                ll.height = Utill.getStatusBarHeight(getContext());
+//                ll.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+//                barLl.setLayoutParams(ll);
+//            }
             //初始化
             setView();
         } catch (Exception e) {
@@ -138,7 +154,7 @@ public class MeFragment extends Fragment {
         getContext().unregisterReceiver(receiver);
     }
 
-    @OnClick({R.id.me_fragment_login_tv, R.id.me_fragment_quit_btn, R.id.me_fragment_rl1, R.id.me_fragment_rl2, R.id.me_fragment_rl3, R.id.me_fragment_rl4, R.id.me_fragment_rl})
+    @OnClick({R.id.me_fragment_login_tv, R.id.me_fragment_quit_btn, R.id.me_fragment_rl1, R.id.me_fragment_rl2, R.id.me_fragment_rl3, R.id.me_fragment_rl4, R.id.me_fragment_rl5, R.id.me_fragment_rl})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.me_fragment_login_tv:
@@ -146,7 +162,7 @@ public class MeFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.me_fragment_quit_btn:
-                final AlertDialog alertDialog = new AlertDialog.Builder(getContext(),R.style.CustomDialog).create();
+                final AlertDialog alertDialog = new AlertDialog.Builder(getContext(), R.style.CustomDialog).create();
                 alertDialog.setCancelable(false);
                 alertDialog.setCanceledOnTouchOutside(false);
                 alertDialog.show();
@@ -173,24 +189,24 @@ public class MeFragment extends Fragment {
                 });
                 break;
             case R.id.me_fragment_rl1:
-                if (!MyApplication.isLogin){
+                if (!MyApplication.isLogin) {
                     Intent intent1 = new Intent(getContext(), LoginActivity.class);
                     startActivity(intent1);
-                }else {
+                } else {
                     getCashRecords();
                 }
                 break;
             case R.id.me_fragment_rl2:
-                if (!MyApplication.isLogin){
+                if (!MyApplication.isLogin) {
                     Intent intent1 = new Intent(getContext(), LoginActivity.class);
                     startActivity(intent1);
-                }else {
+                } else {
                     getCardList();
                 }
                 break;
             case R.id.me_fragment_rl3:
                 //权限检查
-                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(getActivity(),
                             new String[]{Manifest.permission.CALL_PHONE
                             },
@@ -198,7 +214,7 @@ public class MeFragment extends Fragment {
                     return;
                 }
 
-                final AlertDialog alertDialog1 = new AlertDialog.Builder(getContext(),R.style.CustomDialog).create();
+                final AlertDialog alertDialog1 = new AlertDialog.Builder(getContext(), R.style.CustomDialog).create();
                 alertDialog1.setCancelable(false);
                 alertDialog1.setCanceledOnTouchOutside(false);
                 alertDialog1.show();
@@ -231,6 +247,29 @@ public class MeFragment extends Fragment {
                 intent2.putExtra("url", Constants.problems);
                 startActivity(intent2);
                 break;
+            case R.id.me_fragment_rl5:
+                OnekeyShare oks = new OnekeyShare();
+                //关闭sso授权
+                oks.disableSSOWhenAuthorize();
+
+                Bitmap bit= BitmapFactory.decodeResource(getResources(),R.mipmap.logo);
+                // title标题，微信、QQ和QQ空间等平台使用
+                oks.setTitle("卡卡现金");
+                // titleUrl QQ和QQ空间跳转链接
+                oks.setTitleUrl("http://a.app.qq.com/o/simple.jsp?pkgname=com.xinhe.kakaxianjin");
+                oks.setImageData(bit);
+                // text是分享文本，所有平台都需要这个字段
+                oks.setText("实用、安全、快速的信用卡取现APP");
+                // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//                oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+                // url在微信、微博，Facebook等平台中使用
+                oks.setSiteUrl("http://a.app.qq.com/o/simple.jsp?pkgname=com.xinhe.kakaxianjin");
+                oks.setUrl("http://a.app.qq.com/o/simple.jsp?pkgname=com.xinhe.kakaxianjin");
+                // comment是我对这条分享的评论，仅在人人网使用
+                oks.setComment("我是测试评论文本");
+                // 启动分享GUI
+                oks.show(getContext());
+                break;
             case R.id.me_fragment_rl:
                 Intent intent3 = new Intent(getContext(), PersonalInformationActivity.class);
                 startActivity(intent3);
@@ -241,14 +280,14 @@ public class MeFragment extends Fragment {
 
     //获取信用卡、储蓄卡列表
     private void getCardList() {
-        if(!DeviceUtil.IsNetWork(getContext())){
+        if (!DeviceUtil.IsNetWork(getContext())) {
             Toast.makeText(getContext(), "网络异常", Toast.LENGTH_LONG).show();
             return;
         }
 
-        Map<String,String> map=new HashMap<>();
-        map.put("token",MyApplication.token);
-        JSONObject jsonObject=new JSONObject(map);
+        Map<String, String> map = new HashMap<>();
+        map.put("token", MyApplication.token);
+        JSONObject jsonObject = new JSONObject(map);
 
         hd = KProgressHUD.create(getContext())
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -261,20 +300,20 @@ public class MeFragment extends Fragment {
                 .upJson(jsonObject)
                 .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(String s, Call call, okhttp3.Response response) {
-                        LogcatUtil.printLogcat( s);
+                    public void onSuccess(String s, Call call, Response response) {
+                        LogcatUtil.printLogcat(s);
                         Gson gson = new Gson();
                         CardList cardList = gson.fromJson(s, CardList.class);
 
                         if (cardList.getError_code() == 0) {
 //                            Toast.makeText(getContext(),"获取成功",Toast.LENGTH_LONG).show();
-                            MyApplication.cardList=cardList;
+                            MyApplication.cardList = cardList;
                             startActivity(new Intent(getContext(), CardManageActivity.class));
-                        }else if(cardList.getError_code() == 2){
+                        } else if (cardList.getError_code() == 2) {
                             //token过期，重新登录
                             startActivity(new Intent(getContext(), LoginActivity.class));
                             Toast.makeText(getContext(), cardList.getError_message(), Toast.LENGTH_LONG).show();
-                        }else {
+                        } else {
                             Toast.makeText(getContext(), cardList.getError_message(), Toast.LENGTH_LONG).show();
                         }
 
@@ -282,7 +321,7 @@ public class MeFragment extends Fragment {
                     }
 
                     @Override
-                    public void onError(Call call, okhttp3.Response response, Exception e) {
+                    public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(getContext(), "请求失败", Toast.LENGTH_LONG).show();
                         hd.dismiss();
                         super.onError(call, response, e);
@@ -293,14 +332,14 @@ public class MeFragment extends Fragment {
 
     //获取取现记录
     private void getCashRecords() {
-        if(!DeviceUtil.IsNetWork(getContext())){
+        if (!DeviceUtil.IsNetWork(getContext())) {
             Toast.makeText(getContext(), "网络异常", Toast.LENGTH_LONG).show();
             return;
         }
 
-        Map<String,String> map=new HashMap<>();
-        map.put("token",MyApplication.token);
-        JSONObject jsonObject=new JSONObject(map);
+        Map<String, String> map = new HashMap<>();
+        map.put("token", MyApplication.token);
+        JSONObject jsonObject = new JSONObject(map);
 
         hd = KProgressHUD.create(getContext())
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -313,21 +352,21 @@ public class MeFragment extends Fragment {
                 .upJson(jsonObject)
                 .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(String s, Call call, okhttp3.Response response) {
-                        LogcatUtil.printLogcat( s);
+                    public void onSuccess(String s, Call call, Response response) {
+                        LogcatUtil.printLogcat(s);
                         Gson gson = new Gson();
                         CashRecords cashRecords = gson.fromJson(s, CashRecords.class);
 
                         if (cashRecords.getError_code() == 0) {
 //                            Toast.makeText(getContext(),"获取成功",Toast.LENGTH_LONG).show();
-                            MyApplication.cashRecords=cashRecords;
-                            Intent intent=new Intent(getContext(), CashRecordsActivity.class);
+                            MyApplication.cashRecords = cashRecords;
+                            Intent intent = new Intent(getContext(), CashRecordsActivity.class);
                             startActivity(intent);
-                        }else if(cashRecords.getError_code() == 2){
+                        } else if (cashRecords.getError_code() == 2) {
                             //token过期，重新登录
                             startActivity(new Intent(getContext(), LoginActivity.class));
                             Toast.makeText(getContext(), cashRecords.getError_message(), Toast.LENGTH_LONG).show();
-                        }else {
+                        } else {
                             Toast.makeText(getContext(), cashRecords.getError_message(), Toast.LENGTH_LONG).show();
                         }
 
@@ -335,7 +374,7 @@ public class MeFragment extends Fragment {
                     }
 
                     @Override
-                    public void onError(Call call, okhttp3.Response response, Exception e) {
+                    public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(getContext(), "请求失败", Toast.LENGTH_LONG).show();
                         hd.dismiss();
                         super.onError(call, response, e);
@@ -354,7 +393,7 @@ public class MeFragment extends Fragment {
             // 判断Action
             if (Constants.INTENT_EXTRA_LOGIN_SUCESS.equals(action)) {
                 login();
-            }else if (Constants.INTENT_EXTRA_EXIT.equals(action)){
+            } else if (Constants.INTENT_EXTRA_EXIT.equals(action)) {
                 exit();
             }
         }

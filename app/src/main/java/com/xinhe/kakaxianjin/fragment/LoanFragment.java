@@ -39,6 +39,7 @@ import com.xinhe.kakaxianjin.Utils.DeviceUtil;
 import com.xinhe.kakaxianjin.Utils.ExceptionUtil;
 import com.xinhe.kakaxianjin.Utils.GetPathFromUri4kitkat;
 import com.xinhe.kakaxianjin.Utils.PopupWindowUtil;
+import com.xinhe.kakaxianjin.Utils.Utill;
 import com.xinhe.kakaxianjin.biz.update.UpdateService;
 
 import java.io.File;
@@ -79,6 +80,15 @@ public class LoanFragment extends Fragment {
         try {
             view = View.inflate(getActivity(), R.layout.loan_fragment, null);
             unbinder = ButterKnife.bind(this, view);
+//            // 设置顶部控件不占据状态栏
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                LinearLayout barLl = (LinearLayout) view.findViewById(R.id.loan_fragment_top);
+//                barLl.setVisibility(View.VISIBLE);
+//                LinearLayout.LayoutParams ll = (LinearLayout.LayoutParams) barLl.getLayoutParams();
+//                ll.height = Utill.getStatusBarHeight(getContext());
+//                ll.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+//                barLl.setLayoutParams(ll);
+//            }
             //初始化
             initViews();
             //监听
@@ -270,8 +280,8 @@ public class LoanFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
         loanFragmentWeb.destroy();
+        unbinder.unbind();
     }
 
     @OnClick(R.id.loan_fragment_refresh_iv)

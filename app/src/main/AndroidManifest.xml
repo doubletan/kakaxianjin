@@ -34,7 +34,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon">
+        tools:replace="android:icon,android:name">
         <activity
             android:name=".activity.LaunchActivity"
             android:theme="@style/Theme.AppStartLoad">
@@ -47,9 +47,14 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait" />
-        //下载Service
+            android:screenOrientation="portrait"
+            />
+        //h5下载Service
         <service android:name=".biz.update.UpdateService" />
+        //版本更新下载
+        <service android:name=".view.update.DownloadService" />
+
+
         //针对7.0添加代码
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -86,7 +91,7 @@
             android:value="5a727dcff43e4807e5000030" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="baidu" />
+            android:value="oppo" />
 
         <activity android:name=".activity.GetCreditcardListActivity" />
         <activity android:name=".activity.CameraActivity"

@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.xinhe.kakaxianjin.MyApplication;
 import com.xinhe.kakaxianjin.R;
 import com.xinhe.kakaxianjin.Utils.Constants;
 import com.xinhe.kakaxianjin.Utils.ExceptionUtil;
@@ -33,8 +35,16 @@ public class PersonalInformationActivity extends BaseActivity {
             ButterKnife.bind(this);
             //初始化toobar
             initActionBar();
+            //初始化
+            setViews();
         } catch (Exception e) {
             ExceptionUtil.handleException(e);
+        }
+    }
+
+    private void setViews() {
+        if (!TextUtils.isEmpty(MyApplication.phone)){
+            forgotPasswordTv2.setText(MyApplication.phone);
         }
     }
 

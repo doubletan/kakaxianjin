@@ -11,11 +11,11 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +46,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.Response;
 
 public class IDVerifyActivity extends BaseActivity {
 
@@ -55,12 +56,15 @@ public class IDVerifyActivity extends BaseActivity {
     ImageView idVerifyIv;
     @BindView(R.id.id_verify_btn)
     Button idVerifyBtn;
+    @BindView(R.id.id_verify_ll)
+    LinearLayout idVerifyLl;
     private File mFile;
 
     private File file;
     private Uri origUri;
     private Bitmap bitmap;
     private KProgressHUD hd;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +73,20 @@ public class IDVerifyActivity extends BaseActivity {
         try {
             ButterKnife.bind(this);
 
+            //初始化
+            setViews();
             //初始化toobar
             initActionBar();
         } catch (Exception e) {
             ExceptionUtil.handleException(e);
+        }
+    }
+
+    private void setViews() {
+        Intent intent = getIntent();
+        count = intent.getIntExtra("count", 0);
+        if (1 == count) {
+            idVerifyLl.setVisibility(View.GONE);
         }
     }
 
@@ -95,14 +109,14 @@ public class IDVerifyActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.id_verify_iv:
                 //权限检查
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.CAMERA
                             },
                             Constants.PERMISSION_CAMERA);
                     return;
                 }
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE
                             },
@@ -126,9 +140,9 @@ public class IDVerifyActivity extends BaseActivity {
 //                startActivity(intent);
                 break;
             case R.id.id_verify_btn:
-                if (null==bitmap){
-
-                }else {
+                if (null == bitmap) {
+                    Toast.makeText(this,"请先点击图片拍照",Toast.LENGTH_SHORT).show();
+                } else {
                     submit();
                 }
                 break;
@@ -137,7 +151,7 @@ public class IDVerifyActivity extends BaseActivity {
 
     //提交
     private void submit() {
-        if(!DeviceUtil.IsNetWork(this)){
+        if (!DeviceUtil.IsNetWork(this)) {
             Toast.makeText(this, "网络异常", Toast.LENGTH_LONG).show();
             return;
         }
@@ -149,10 +163,10 @@ public class IDVerifyActivity extends BaseActivity {
                 .show();
 
         String base64 = Base64Utils.bitmapToBase64(bitmap);
-        Map<String,String> map=new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("image", base64);
         map.put("token", MyApplication.token);
-        JSONObject jsonObject=new JSONObject(map);
+        JSONObject jsonObject = new JSONObject(map);
 
 
         OkGo.post(Constants.commonURL + Constants.distinguish)
@@ -160,20 +174,23 @@ public class IDVerifyActivity extends BaseActivity {
                 .upJson(jsonObject)
                 .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(String s, Call call, okhttp3.Response response) {
-                        LogcatUtil.printLogcat( s);
+                    public void onSuccess(String s, Call call, Response response) {
+                        LogcatUtil.printLogcat(s);
                         Gson gson = new Gson();
                         IdMessage idMessage = gson.fromJson(s, IdMessage.class);
 
                         if (idMessage.getError_code() == 0) {
-                            startActivity(new Intent(IDVerifyActivity.this, CardActivity.class));
                             Toast.makeText(IDVerifyActivity.this, "验证成功", Toast.LENGTH_LONG).show();
+                            //是否要跳转
+                            if (count==0){
+                                startActivity(new Intent(IDVerifyActivity.this, CardActivity.class));
+                            }
                             finish();
-                        }else if(idMessage.getError_code() == 2){
+                        } else if (idMessage.getError_code() == 2) {
                             //token过期，重新登录
                             startActivity(new Intent(IDVerifyActivity.this, LoginActivity.class));
                             Toast.makeText(IDVerifyActivity.this, idMessage.getError_message(), Toast.LENGTH_LONG).show();
-                        }else {
+                        } else {
                             Toast.makeText(IDVerifyActivity.this, idMessage.getError_message(), Toast.LENGTH_LONG).show();
                         }
 
@@ -181,8 +198,9 @@ public class IDVerifyActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onError(Call call, okhttp3.Response response, Exception e) {
+                    public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(IDVerifyActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                        hd.dismiss();
                         super.onError(call, response, e);
                     }
                 });
@@ -211,18 +229,18 @@ public class IDVerifyActivity extends BaseActivity {
             String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new
                     Date()) + ".jpg";
 
-            file=new File(vFile, fileName);
+            file = new File(vFile, fileName);
             //拍照所存路径
             origUri = Uri.fromFile(file);
 
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (Build.VERSION.SDK_INT > 23) {//7.0及以上
-            origUri = FileProvider.getUriForFile(IDVerifyActivity.this,Constants.fileprovider,new File(vFile, fileName));
-            grantUriPermission(getPackageName(),origUri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, origUri);
-        } else {//7.0以下
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, origUri);
-        }
+            if (Build.VERSION.SDK_INT > 23) {//7.0及以上
+                origUri = FileProvider.getUriForFile(IDVerifyActivity.this, Constants.fileprovider, new File(vFile, fileName));
+                grantUriPermission(getPackageName(), origUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, origUri);
+            } else {//7.0以下
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, origUri);
+            }
             startActivityForResult(intent, Constants.REQUEST_CODE_TAKE_PICETURE);
 
         } catch (Exception e) {
@@ -233,25 +251,24 @@ public class IDVerifyActivity extends BaseActivity {
 
     //拍完照后处理
     private void takePictureResult(int resultCode) {
-            if (resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
 
-                if (origUri != null) {
+            if (origUri != null) {
 
-                    try {
-                        bitmap = BitmapUtils.getBitmapFormUri(IDVerifyActivity.this, origUri);
-                    } catch (IOException e) {
-                        ExceptionUtil.handleException(e);
-                    }
-
+                try {
+                    bitmap = BitmapUtils.getBitmapFormUri(IDVerifyActivity.this, origUri);
+                } catch (IOException e) {
+                    ExceptionUtil.handleException(e);
                 }
-                idVerifyIv.setImageBitmap(bitmap);
-            } else {
-                //点击了file按钮，必须有一个返回值，否则会卡死
-                Toast.makeText(this,"拍照失败",Toast.LENGTH_LONG).show();
+
             }
+            idVerifyIv.setImageBitmap(bitmap);
+        } else {
+            //点击了file按钮，必须有一个返回值，否则会卡死
+            Toast.makeText(this, "拍照失败", Toast.LENGTH_LONG).show();
+        }
 
     }
-
 
 
     @Override

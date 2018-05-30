@@ -371,6 +371,7 @@ public class CardActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(CardActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                        hd.dismiss();
                         super.onError(call, response, e);
                     }
                 });
@@ -531,6 +532,7 @@ public class CardActivity extends BaseActivity {
                         @Override
                         public void onError(Call call, Response response, Exception e) {
                             Toast.makeText(CardActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                            hd.dismiss();
                             super.onError(call, response, e);
                         }
                     });

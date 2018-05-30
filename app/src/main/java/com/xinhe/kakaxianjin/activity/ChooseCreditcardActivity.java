@@ -331,7 +331,7 @@ public class ChooseCreditcardActivity extends BaseActivity {
                     Window window1 = alertDialog1.getWindow();
                     window1.setContentView(R.layout.dialog_one);
                     TextView tv11 = (TextView) window1.findViewById(R.id.integral_exchange_tips1_tv);
-                    tv11.setText("大额整数额度将被视为套现行为，请修改额度");
+                    tv11.setText("大额整数额度将被视为套现行为，请修改额度（例：3500修改为3501）");
                     RelativeLayout rl21 = (RelativeLayout) window1.findViewById(R.id.integral_exchange_tips1_rl1);
                     rl21.setOnClickListener(new View.OnClickListener() {
 
@@ -387,7 +387,7 @@ public class ChooseCreditcardActivity extends BaseActivity {
             Window window1 = alertDialog1.getWindow();
             window1.setContentView(R.layout.dialog_one);
             TextView tv11 = (TextView) window1.findViewById(R.id.integral_exchange_tips1_tv);
-            tv11.setText("大额整数金额将被视为套现行为，请修改金额");
+            tv11.setText("大额整数额度将被视为套现行为，请修改额度（例：3500修改为3501）");
             RelativeLayout rl21 = (RelativeLayout) window1.findViewById(R.id.integral_exchange_tips1_rl1);
             rl21.setOnClickListener(new View.OnClickListener() {
 
@@ -520,6 +520,9 @@ public class ChooseCreditcardActivity extends BaseActivity {
                         if (loginMessage.getError_code() == 0) {
                             //跳转到结果页
                             startActivityForResult(new Intent(ChooseCreditcardActivity.this,CashResultActivity.class),Constants.CHOOSECREDITCARDACTIVITY_TO_CASHRESULT);
+                            //手机验证码设置成空
+                            isSend=false;
+                            chooseCreditcardCodeEt2.setText("");
                         } else {
                             Toast.makeText(ChooseCreditcardActivity.this, loginMessage.getError_message(), Toast.LENGTH_LONG).show();
 
@@ -799,6 +802,7 @@ public class ChooseCreditcardActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(ChooseCreditcardActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                        hd.dismiss();
                         super.onError(call, response, e);
                     }
                 });

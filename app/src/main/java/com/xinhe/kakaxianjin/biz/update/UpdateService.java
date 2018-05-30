@@ -128,7 +128,7 @@ public class UpdateService extends Service {
     private static String getFileProviderAuthority(Context context) {
         try {
             for (ProviderInfo provider : context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_PROVIDERS).providers) {
-                if (FileProvider.class.getName().equals(provider.name) && provider.authority.endsWith(".update_app.file_provider")) {
+                if (FileProvider.class.getName().equals(provider.name) && provider.authority.endsWith(".fileprovider")) {
                     return provider.authority;
                 }
             }

@@ -395,6 +395,8 @@ public class CreditcardActivity extends AppCompatActivity {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         Toast.makeText(CreditcardActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                        hd.dismiss();
+
                         super.onError(call, response, e);
                     }
                 });
@@ -586,6 +588,7 @@ public class CreditcardActivity extends AppCompatActivity {
                         @Override
                         public void onError(Call call, Response response, Exception e) {
                             Toast.makeText(CreditcardActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                            hd.dismiss();
                             super.onError(call, response, e);
                         }
                     });

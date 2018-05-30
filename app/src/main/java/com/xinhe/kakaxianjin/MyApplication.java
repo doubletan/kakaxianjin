@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
+import com.mob.MobSDK;
 import com.umeng.commonsdk.UMConfigure;
 import com.xinhe.kakaxianjin.Utils.ExceptionUtil;
 import com.xinhe.kakaxianjin.bean.CardList;
@@ -80,6 +81,10 @@ public class MyApplication extends Application{
          * 参数3:Push推送业务的secret
          */
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "5a727dcff43e4807e5000030");
+
+
+        //sharesdk
+        MobSDK.init(this);
 
     }
 

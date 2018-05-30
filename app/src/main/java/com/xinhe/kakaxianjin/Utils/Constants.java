@@ -28,6 +28,8 @@ public class Constants {
 //    public static String commonURL = "http://test.api.anwenqianbao.com/v0/";
     //正式地址
     public static String commonURL = "https://api.anwenqianbao.com/v0/";
+    //版本更新
+    public static String update = "version/version";
     //注册发送验证码
     public static String sendCode = "sms/getcode";
     //忘记密码发送验证码
@@ -76,6 +78,8 @@ public class Constants {
     public static String queryComplete = "hengxin/queryComplete";
     //取现中未绑定银联的跳银联
     public static String frontTransTokens1 = "bank/frontTransTokens";
+    //获取信用卡代还链接
+    public static String fetch = "daihuan/fetch";
 
 
 
@@ -100,7 +104,7 @@ public class Constants {
     //注册渠道
     public static String channel = "2";
     //注册渠道1
-    public static String channel1 = "baidu";
+    public static String channel1 = "oppo";
     //App名称
     public static String appName = "现金贷";
     //公司名字

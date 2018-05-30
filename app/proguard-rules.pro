@@ -83,6 +83,24 @@
   public *;
 }
 
+
+#rxjava
+-dontwarn rx.**
+-keep class rx.** { *; }
+
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+ long producerIndex;
+ long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+ rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+ rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+
 #baidu定位
 -keep class com.baidu.** {*;}
 -keep class vi.com.** {*;}
@@ -115,8 +133,22 @@ public static final int *;
 #-keepclasscom.nineoldandroids.**{*;}
 
 #weixin
-#-dontwarncom.tencent.mm.**
-#-keepclasscom.tencent.mm.**{*;}
+#-keep class com.tencent.mm.opensdk.** {*;}
+#-keep class com.tencent.wxop.** {*;}
+#-keep class com.tencent.mm.sdk.** {*;}
+
+
+#sharesdk
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class **.R$* {*;}
+-keep class **.R{*;}
+-keep class com.mob.**{*;}
+-keep class m.framework.**{*;}
+-dontwarn cn.sharesdk.**
+-dontwarn com.sina.**
+-dontwarn **.R$*
+
 
 #JGPUSH
 -dontwarn cn.jpush.**

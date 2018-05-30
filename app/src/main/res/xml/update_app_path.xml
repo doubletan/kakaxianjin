@@ -10,14 +10,10 @@
         <external-cache-path
             name="update_app_external_cache_files"
             path="/update" />
+
+
+        <!--表示Environment.getExternalStorageDirectory() 下的所有路径都申请权限-->
+        <external-path name="camera_photos" path="" />
     </paths>
 
-    <cache-path name="portrait" path="images/"/>
-    <cache-path name="idCard" path="images/"/>
-    <cache-path name="license" path="images/"/>
-    <paths>
-        <external-path
-            name="camera_photos"
-            path="" />
-    </paths>
 </resources>
